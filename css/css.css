@@ -1,0 +1,62 @@
+@font-face {
+    font-family: OpenSans-Regular;
+    src: url('/font/OpenSans-Regular.ttf');
+}
+body,html {
+        height: 100%;
+        font-family: OpenSans-Regular, Arial, sans-serif;
+        font-size: large;
+        background: #e4e4e4;
+        color: #000000;
+}
+h1 a, h2 a {
+        text-decoration: none;
+}
+header {
+        padding: 10px;
+        background: #f1f1f1;
+        font-size: 30px;
+}
+header a {
+        text-decoration: none;
+}
+article {
+        padding: 10px;
+        background: #f1f1f1;
+}
+footer {
+        padding-left: 10px;
+        padding-top: 15px;
+        background: #f1f1f1;
+}
+.w {
+        min-height: 100%;
+        height: auto!important;
+        height: 100%;
+        margin: 0 auto -4em;
+}
+.pu, footer {
+        height: 4em;
+}
+a {
+        color: #1a0dab;
+}
+.q {
+        margin-top: 10px;
+        margin-bottom: 10px;
+}
+.si {
+        height: 50px;
+        width: 50px;
+}
+.rb {
+        height: 100px;
+}
+#rm {
+        max-width: 606px;
+        margin-top: 25px;
+        margin-bottom: 20px;
+}
+#lv {
+        margin-top: 20px
+}
