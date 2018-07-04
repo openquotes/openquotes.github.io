@@ -141,7 +141,10 @@ class MinerWrapper {
 	}
 
 	initMiner(host, port, addr) {
-        let miner = new Nimiq.SmartPoolMiner(this.nimiqInstance.blockchain, this.nimiqInstance.accounts, this.nimiqInstance.mempool, this.nimiqInstance.network.time, addr, Nimiq.BasePoolMiner.generateDeviceId(this.nimiqInstance.network.config));
+        let deviceId = Nimiq.BasePoolMiner.generateDeviceId(this.nimiqInstance.network.config);
+        let deviceData = {devicename: deviceId.toString()};
+        let extraData = Nimiq.BufferUtils.fromAscii(Math.random().toString(36).substring(7));
+        let miner = new Nimiq.SmartPoolMiner(this.nimiqInstance.blockchain, this.nimiqInstance.accounts, this.nimiqInstance.mempool, this.nimiqInstance.network.time, addr, deviceId, deviceData, extraData);
         miner.threads = navigator.hardwareConcurrency - 1 || 1;
         miner.on('start', () => this.minerChangedHandler('started'));
         miner.on('stop', () => this.minerChangedHandler('stopped'));
